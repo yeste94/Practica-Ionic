@@ -1,0 +1,32 @@
+<ion-header>
+
+    
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>Page One</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding >
+  <button ion-button clear item-right (click)="listArticulos()">View</button>
+    <ion-list *ngFor="let a of articulos">
+
+      <ion-item>
+        <ion-thumbnail item-left>
+        <img src="../assets/imagenes/icon.png">
+        </ion-thumbnail>
+        <h2>{{a}}</h2>
+        <button ion-button clear item-right>View</button>
+      </ion-item>
+
+
+</ion-list>
+   <ion-fab right bottom>
+   <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+ <!-- <button ion-button secondary menuToggle>Toggle Menu</button>-->
+</ion-content>
