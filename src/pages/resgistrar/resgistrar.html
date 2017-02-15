@@ -14,7 +14,9 @@
 
 
 <ion-content padding>
+
 <ion-list>
+
   <ion-item>
     <ion-label fixed>Nick</ion-label>
     <ion-input #nick type="text" value=""></ion-input>
@@ -41,7 +43,7 @@
     <ion-input type="password"></ion-input>
   </ion-item>
 
+</ion-list>
 
-
-<button ion-button (click)="anadirUsuario(nick,correo,pass)">Registrar</button>
+  <button ion-button clear (click)="anadirUsuario(nick,correo,pass)">Registrar</button>
 </ion-content>

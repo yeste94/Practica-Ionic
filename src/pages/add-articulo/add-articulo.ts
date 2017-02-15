@@ -26,6 +26,8 @@ export class AddArticuloPage {
     console.log('ionViewDidLoad AddArticuloPage');
   }
 
+
+
   takePicture(){
     Camera.getPicture({
         destinationType: Camera.DestinationType.DATA_URL,
@@ -41,8 +43,8 @@ export class AddArticuloPage {
 
 
 
-        anadirArticulo(nombre:string,descripcion:string,precio:number,localidad:string){
-  this.http.get(URL_ANADIR_ART+"?nombre="+nombre+"&descripcion="+descripcion
+   anadirArticulo(nombre:string,descripcion:string,precio:number,localidad:string){
+     this.http.get(URL_ANADIR_ART+"?nombre="+nombre+"&descripcion="+descripcion
                                       +"&precio="+precio+"localidad="+localidad).subscribe(
       subscribe => {
                 let data = subscribe.json();
@@ -55,7 +57,7 @@ export class AddArticuloPage {
 
     anadirImagen(){
 
-  this.http.post(URL,this.base64Image).subscribe(
+  this.http.post(URL,{imagen: this.base64Image}).subscribe(
       subscribe => {
                 alert(this.base64Image);
                  

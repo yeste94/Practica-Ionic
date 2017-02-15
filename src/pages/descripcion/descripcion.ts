@@ -93,9 +93,16 @@ loadMap(coordenada:any[]){
       'bearing': 50
     }
   });
-  this.map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
-  console.log('Map is ready!');
-});
+
+  this.map.on(GoogleMapsEvent.MAP_READY).subscribe(
+   response => {
+        console.log('Map is ready!');
+        console.log(response.json());
+},
+error =>
+  console.log(error)
+);
+
 }
 
 }

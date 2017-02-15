@@ -30,16 +30,17 @@ export class BuscarPage {
   }
   
   listArticulosBuscar(nombre:string){
+    alert("Hol");
     this.articulos=[];
     this.http.get(URL_BUSCAR+"?nombre="+nombre).subscribe(
       subscribe => {
         let data = subscribe.json();
+         console.log(data);
         for(var i=0; i<data.length; i++){
-          this.articulos.push(data[i].id);
+          this.articulos.push(data[i]);
           }
       },
       error => alert(error));
-            //this.navCtrl.setRoot(Page1));
   }
 
   listArticulos(){
@@ -48,7 +49,7 @@ export class BuscarPage {
 			subscribe => {
         let data = subscribe.json();
         for(var i=0; i<data.length; i++){
-          this.articulos.push(data[i].id);
+          this.articulos.push(data[i]);
           }
       },
 			error => alert(error));

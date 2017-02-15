@@ -4,14 +4,14 @@ import {Http} from '@angular/http';
 
 import {MisProductosPage} from '../mis-productos/mis-productos';
 import {ResgistrarPage} from '../resgistrar/resgistrar';
-
+import { AlertController } from 'ionic-angular';
 /*
   Generated class for the Login page.
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
-	const URL = 'http://127.0.0.1/PracticaIonic/getLogin.php';
+	const URL = 'http://localhost/PracticaIonic/getLogin.php';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -19,12 +19,29 @@ import {ResgistrarPage} from '../resgistrar/resgistrar';
 export class LoginPage {
 
    
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http:Http) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http:Http,public alertCtrl: AlertController) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
+  loginAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Error!',
+      subTitle: 'Usuario o contraseña incorrecto',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+    ErrorCon() {
+    let alert = this.alertCtrl.create({
+      title: 'Error!',
+      subTitle: 'Error de conexion',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 
   login(user:string , pass:string){
 
@@ -35,11 +52,11 @@ export class LoginPage {
             if(data.resp=='success'){
                 this.navCtrl.setRoot(MisProductosPage);
             }else{
-                alert("No login");
+                this.loginAlert();
             }
             },
-			error => //alert(error)
-        this.navCtrl.setRoot(MisProductosPage)
+			error => this.ErrorCon()
+            //this.navCtrl.setRoot(MisProductosPage)
         );
 
   }
